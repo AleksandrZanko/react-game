@@ -8,7 +8,7 @@ function Header() {
         <li><NavLink className='header-link' to="/" exact>Игра</NavLink></li>
         <li><NavLink className='header-link' to="/rules">Правила</NavLink></li>
         <li><NavLink className='header-link' to="/settings">Настройки</NavLink></li>
-        <li><NavLink className='header-link' to="/leaderboard">Доска почёта</NavLink></li>
+        <li><NavLink className='header-link' to="/leaderboard">Результаты</NavLink></li>
       </ul>      
     </nav>
   )

@@ -1,0 +1,14 @@
+.results-list {
+  margin: 0;
+  margin-left: 50px;
+  margin-right: 30px;
+  padding: 0;
+}
+
+.results-item {
+  padding: 7px;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+}

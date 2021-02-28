@@ -1,0 +1,49 @@
+.music-range-wrapper,
+.sound-range-wrapper,
+.choice-bg-wrapper {
+  margin: 0 auto;
+  margin-bottom: 50px;
+
+  width: fit-content;
+  text-align: center;
+}
+
+.music-range-title,
+.sound-range-title {
+  font-size: 20px;
+	line-height: 1.3;
+	font-weight: 600;
+	font-family: "Roboto", sans-serif;
+}
+
+#musicVolume,
+#soundVolume {
+  width: 350px;
+}
+
+#musicVolume:hover,
+#soundVolume:hover {
+  cursor: pointer;
+}
+
+.snows {
+  background-image: url(../img/blue-snow.png);
+}
+
+.leaves {
+  background-image: url(../img/leaves.png);
+}
+
+.trees {
+  background-image: url(../img/trees.png);
+}
+
+.select-bg {
+  padding: 7px;
+
+  font-size: 16px;
+	line-height: 1.2;
+	font-weight: 400;
+	font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+}
