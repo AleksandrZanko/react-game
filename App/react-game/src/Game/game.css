@@ -401,6 +401,13 @@
 	font-weight: 700;
 	font-family: "Roboto", sans-serif;
   text-align: center;
+  animation-name: fly;
+  animation-duration: 3s;
+}
+
+@keyframes fly {
+	0% {transform: translateY(1350px); }
+	100% {transform: translateY(0); }	
 }
 
 .end-game-text {
@@ -414,6 +421,8 @@
 	font-weight: 400;
 	font-family: "Roboto", sans-serif;
   text-align: center;
+  animation-name: fly;
+  animation-duration: 3s;
 }
 
 .end-game-button {
@@ -430,6 +439,8 @@
   border: 2px solid black;
   border-radius: 10px;
   outline: none;
+  animation-name: fly;
+  animation-duration: 3s;
 }
 
 .end-game-button:hover {
