@@ -22,7 +22,7 @@ class Results extends React.Component {
   render() {
     return (
       <><ol className="results-list">
-         {winKeys.map(item => <li key={item.id} className="results-item">Игрок: {item.name}, очки: {item.points}, время: {item.time} cек., дата игры: {item.date.substr(0, 19)}. </li>)}
+         {winKeys.map(item => <li key={item.id} className="results-item">Игрок: {item.name}, очки: {item.points}, время: {item.time} cек., дата игры: {item.date}. </li>)}
          </ol>
       </>
     )

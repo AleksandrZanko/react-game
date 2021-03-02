@@ -314,7 +314,6 @@ class Game extends React.Component {
   }
 
   endGame() {
-    console.log(1);
     window.location.reload();
   }
   
@@ -360,7 +359,6 @@ class Game extends React.Component {
     setTimeout( () => {
       screen.innerText = 'VS';
     }, 5000)
-    console.log(computerChoice);
   }
 
   computerChoice() {

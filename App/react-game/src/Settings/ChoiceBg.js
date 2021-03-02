@@ -1,7 +1,6 @@
 import React from 'react';
 
 let body = document.querySelector('body');
-console.log(body);
 
 class ChoiceBg extends React.Component {
   render() {
