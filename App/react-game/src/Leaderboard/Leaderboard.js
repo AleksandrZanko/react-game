@@ -9,7 +9,7 @@ class Leaderboard extends React.Component {
   render() {
     return (
       <>
-        <h1>Результаты 10 предыдущих игр</h1>
+        <h1 className="results-title">Результаты 10 предыдущих игр</h1>
         <Results/>
       </>
     )

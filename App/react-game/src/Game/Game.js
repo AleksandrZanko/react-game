@@ -11,6 +11,7 @@ import winsound from '../audio/win.mp3';
 import losesound from '../audio/lose.mp3';
 import MusicButton from './MusicButton';
 import SoundButton from './SoundButton';
+import NewGameButton from './NewGameButton';
 
 
 class Game extends React.Component {
@@ -32,6 +33,8 @@ class Game extends React.Component {
     this.addToLocalStogage = this.addToLocalStogage.bind(this);
     this.musicOff = this.musicOff.bind(this);
     this.soundOff = this.soundOff.bind(this);
+    this.addKeyboardControl = this.addKeyboardControl.bind(this);
+    this.newGame = this.newGame.bind(this);
 
     this.state = {
       time: 0,
@@ -42,7 +45,6 @@ class Game extends React.Component {
       playerVariant: '',
       computerVariant: '',
       date: '',
-  
       winSound: new Audio(winsound),
       loseSound: new Audio(losesound)
     }
@@ -87,6 +89,8 @@ class Game extends React.Component {
       });
       this.deleteOverflow();
       this.startTime();
+      this.addKeyboardControl();
+      this.newGame();
     } else {
       name.classList.add('error');
       setTimeout(() => {
@@ -94,6 +98,55 @@ class Game extends React.Component {
         name.focus();
       }, 700);
     } 
+  }
+
+  newGame() {
+    let button = document.querySelector('.new-game-btn');
+    button.style.display = 'block';
+  }
+
+  addKeyboardControl() {  
+    let count = 0; 
+    document.addEventListener('keydown', (event) => {
+    if((event.code === 'Space' || event.code === 'KeyZ' || event.code === 'KeyX') && count > 0) {   
+      return false;    
+    }
+
+    let overflow = document.querySelector('.overflow').style.display;
+    if((event.code === 'Space' || event.code === 'KeyZ' || event.code === 'KeyX') && overflow === '') {   
+      return false;    
+    }
+   
+        if(event.code === 'Space') {
+          this.setState({
+            playerVariant: 'paper'
+          });
+          count++;
+          this.deleteExtraOptions();
+          this.computerChoice();
+          setTimeout(() => count--, 5000);
+        }
+
+        if(event.code === 'KeyZ') {
+          this.setState({
+            playerVariant: 'rock'
+          });
+          count++;
+          this.deleteExtraOptions();
+          this.computerChoice();
+          setTimeout(() => count--, 5000);
+        }
+
+        if(event.code === 'KeyX') {
+          this.setState({
+            playerVariant: 'scissors'
+          });
+          count++;
+          this.deleteExtraOptions();
+          this.computerChoice();
+          setTimeout(() => count--, 5000);
+        }
+      }) 
   }
   
   async musicOff(e) {   
@@ -131,16 +184,25 @@ class Game extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);   
+    clearInterval(this.timer); 
   }
 
   deleteExtraOptions() {
     let currentVariant = this.state.playerVariant;
-    let paper = document.querySelector('.game-player--paper');
-    let scissors = document.querySelector('.game-player--scissors');
-    let rock = document.querySelector('.game-player--rock');
+    let paper;
+    let scissors;
+    let rock;
+    if(this.props.region === 'europa') {
+       paper = document.querySelector('.game-player--paper');
+       scissors = document.querySelector('.game-player--scissors');
+       rock = document.querySelector('.game-player--rock');
+    } else {
+       paper = document.querySelector('.game-player--paper-africa');
+       scissors = document.querySelector('.game-player--scissors-africa');
+       rock = document.querySelector('.game-player--rock-africa');
+    }
 
-    if(this.state.playerVariant === 'paper') {
+    if(this.state.playerVariant === 'paper') { 
       scissors.classList.add('delete');
       rock.classList.add('delete');
       paper.disabled = true;
@@ -182,24 +244,48 @@ class Game extends React.Component {
 
     if(computerVariant === 'rock') {     
       setTimeout( () => {
-        answer.classList.add('rock');
+        if(this.props.region === 'europa') {
+          answer.classList.add('rock');
+        } else {
+          answer.classList.add('rock-africa');
+        }     
       }, 3010);
       setTimeout( () => {
-        answer.classList.remove('rock');
+        if(this.props.region === 'europa') {
+          answer.classList.remove('rock');
+        } else {
+          answer.classList.remove('rock-africa');
+        }  
       }, 5000);
     } else if(computerVariant === 'paper') {
       setTimeout( () => {
+        if(this.props.region === 'europa') {
         answer.classList.add('paper');
+        } else {
+          answer.classList.add('paper-africa');
+        }
       }, 3010);
       setTimeout( () => {
-        answer.classList.remove('paper');
+        if(this.props.region === 'europa') {
+          answer.classList.remove('paper');
+        } else {
+          answer.classList.remove('paper-africa');
+        }   
       }, 5000);
     } else {
       setTimeout( () => {
-        answer.classList.add('scissors');
+        if(this.props.region === 'europa') {
+          answer.classList.add('scissors');
+        } else {
+          answer.classList.add('scissors-africa');
+        }     
       }, 3010);
       setTimeout( () => {
-        answer.classList.remove('scissors');
+        if(this.props.region === 'europa') {
+          answer.classList.remove('scissors');
+        } else {
+          answer.classList.remove('scissors-africa');
+        }     
       }, 5000);
     }
 
@@ -299,22 +385,21 @@ class Game extends React.Component {
     this.computerChoice();
   }
 
- 
-
   render() {
     return (
       <>
-        <h1>Страница игры</h1>
+        <h1 className="game-title">Страница игры</h1>
         <div className="game-wrapper">
           <Info time={this.state.time} lifes={this.state.lifes} points={this.state.points}/>
           <MusicButton musicOff={this.musicOff} musicOn={this.props.musicOn}/>
           <SoundButton soundOff={this.soundOff} soundOn={this.props.soundOn}/>
           <div className="game-field">
-            <PlayerChoice playerOption={this.playerOption}/>
+            <PlayerChoice region={this.props.region} playerOption={this.playerOption}/>
             <div className="game-field-screen">VS</div>
             <ComputerChoice />
           </div>
           <Button startGame={this.startGame}/>
+          <NewGameButton />
         </div>
         <Popup closePopup={this.closePopup}/>
         <EndGame endGame={this.endGame}/>

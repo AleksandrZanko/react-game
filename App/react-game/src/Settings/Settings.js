@@ -2,6 +2,8 @@ import React from 'react';
 import MusicRange from './MusicRange';
 import SoundRange from './SoundRange';
 import ChoiceBg from './ChoiceBg';
+import ChoiceMusic from './ChoiceMusic';
+import ChoiceRegion from './ChoiceRegion';
 import './settings.css';
 
 
@@ -28,10 +30,12 @@ class Settings extends React.Component {
   render() {
     return (
       <>
-        <h1>Настройки</h1>
+        <h1 className="settings-title">Настройки</h1>
         <MusicRange changeMusicRange={this.props.changeMusicRange} musicVolume={this.props.musicVolume}/>
         <SoundRange changeSoundRange={this.props.changeSoundRange} soundVolume={this.props.soundVolume}/>
         <ChoiceBg changeBg={this.changeBg}/>
+        <ChoiceMusic currentSong={this.props.currentSong} changeSong={this.props.changeSong}/>
+        <ChoiceRegion region={this.props.region} changeRegion={this.props.changeRegion}/>
       </>
     )
   }
