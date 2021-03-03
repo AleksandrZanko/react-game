@@ -146,6 +146,7 @@
  
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: transparent;
   border: none;
   outline: none;
   opacity: 0.5;
@@ -159,6 +160,7 @@
 .game-player--rock-africa:hover,
 .game-player--scissors-africa:hover {
   cursor: pointer;
+  background-color: transparent;
   opacity: 1;
 }
 
@@ -182,6 +184,7 @@
   background-image: url('../img/paper-africa.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: transparent;
   border: none;
   outline: none;
   opacity: 0.5;
@@ -195,6 +198,7 @@
   background-image: url('../img/rock-africa.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: transparent;
   border: none;
   outline: none;
   opacity: 0.5;
@@ -208,6 +212,7 @@
   background-image: url('../img/scissors-africa.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: transparent;
   border: none;
   outline: none;
   opacity: 0.5;
@@ -546,15 +551,6 @@
 }
 
 @media (max-width: 900px) {
-  /* .game-player--rock:hover,
-  .game-player--scissors:hover,
-  .game-player--paper:hover,
-  .game-player--rock-africa:hover,
-  .game-player--scissors-africa:hover,
-  .game-player--paper-africa:hover {
-    opacity: 0.5;
-  } */
-
   .game-player--rock:active,
   .game-player--scissors:active,
   .game-player--paper:active,
