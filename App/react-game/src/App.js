@@ -5,7 +5,7 @@ import Game from './Game/Game.js';
 import Rules from './Rules/Rules.js';
 import Settings from './Settings/Settings.js';
 import Leaderboard from './Leaderboard/Leaderboard.js';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, NavLink, HashRouter} from 'react-router-dom';
 import gamesound from './audio/game.mp3';
 import spaceSound from './audio/space.mp3';
 
@@ -83,7 +83,7 @@ class App extends React.Component {
   render () {
       return (
       <>
-        <Router>
+        <HashRouter>
           <Header />
           <Switch>
             <Route exact path="/" render={props => <Game region={this.state.region} changeSoundOn={this.changeSoundOn} changeMusicOn={this.changeMusicOn} soundOn={this.state.soundOn} musicOn={this.state.musicOn} bgsound={this.state.bgsound} musicVolume={this.state.musicVolume} soundVolume={this.state.soundVolume} {...props} />}></Route>
@@ -91,7 +91,7 @@ class App extends React.Component {
             <Route path="/settings" render={props => <Settings region={this.state.region} changeRegion={this.changeRegion} currentSong={this.state.currentSong} changeSong={this.changeSong} musicVolume={this.state.musicVolume} changeMusicRange={this.changeMusicRange} soundVolume={this.state.soundVolume} changeSoundRange={this.changeSoundRange} {...props} />}></Route>
             <Route path="/leaderboard" component={Leaderboard}></Route>
           </Switch>
-        </Router>
+        </HashRouter>
       </>
     );
   }
