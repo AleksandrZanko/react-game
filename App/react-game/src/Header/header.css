@@ -1,0 +1,33 @@
+.header-nav {
+  width: 100%;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 0;
+  padding: 15px 0;
+
+  list-style: none;
+}
+
+.header-link {
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.header-link:hover {
+  background-color: #faf79d;
+}
+
+.header-list .active {
+  background-color: #faf79d;
+}
